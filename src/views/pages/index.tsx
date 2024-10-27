@@ -5,6 +5,7 @@ import { DefaultSecond } from "../components/DefaultSecond";
 import { DefaultThird } from "../components/DefaultThird";
 import { SideBar } from"./SideBar";
 import { NaviBar } from "./NaviBar";
+import './../../index.css';
 
 export const Pages: React.FC = () => {
   return (

@@ -1,11 +1,16 @@
 import React from 'react';
-import './App.css';
 import { Pages } from './views/pages';
+import "./App.css"
 
 export const App = () => {
   return (
-    <div>
-      <Pages />
-    </div>
+    <>
+      <head>
+        <link href="./App.css" rel="stylesheet"/>
+      </head>
+      <div>
+        <Pages />
+      </div>
+    </>
   );
 }
