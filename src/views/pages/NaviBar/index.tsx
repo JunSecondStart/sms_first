@@ -4,17 +4,17 @@ export const NaviBar: React.FC = () => {
   return (
     <>
         <p>sub menu -mode-</p>
-        <ul>
+        <ul className="flex">
           <li>
             <p>A．display</p>
-            <ul>
+            <ul className="flex">
               <li>-Normal-</li>
               <li>-SNS-</li>
             </ul>
           </li>
           <li>
             <p>B.color</p>
-            <ul>
+            <ul className="flex">
               <li>-Normal-</li>
               <li>-passion-</li>
               <li>-cool-</li>
