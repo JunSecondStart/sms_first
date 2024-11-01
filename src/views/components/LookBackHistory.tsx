@@ -1,12 +1,14 @@
 import React from "react";
-import { Home } from "./Home";
+import { LookBackHistoryDisplay } from "./LookBackHistoryDisplay";
+import { SmsState } from "../../types/index.d";
 
 export const LookBackHistory: React.FC = () => {
+
   return (
     <>
       <header>menu for history</header>
       <body>
-        <Home />
+        <LookBackHistoryDisplay/>
       </body>
       <footer>default sub menu</footer>
     </>

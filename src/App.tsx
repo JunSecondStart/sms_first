@@ -1,15 +1,17 @@
 import React from 'react';
 import { Pages } from './views/pages';
-import "./App.css";
+import { SmsFieldContextProvider } from "./context";
 
-export const App = () => {
+export const App:React.FC = () => {
   return (
     <>
       <header>
         <link rel="stylesheet" href="./App.css"/>
       </header>
       <div>
-        <Pages />
+        <SmsFieldContextProvider>
+          <Pages/>
+        </SmsFieldContextProvider>
       </div>
     </>
   );
