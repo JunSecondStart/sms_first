@@ -24,3 +24,4 @@ yarn-error.log*
 
 # added after "default settings"
 docs/
+shell/send_sms.sh

@@ -1,10 +1,10 @@
 import React from "react";
 import { Home } from "./Home";
 
-export const Default: React.FC = () => {
+export const RegisterNewNumber: React.FC = () => {
   return (
     <>
-      <header>default menu</header>
+      <header>menu for register</header>
       <body>
         <Home />
       </body>
