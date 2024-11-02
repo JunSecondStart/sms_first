@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSms } from "../../context";
-import { SmsState,SmsContext } from "../../types/index.d";
+import { SmsState } from "../../types/index.d";
 
 export const SendSMSCreated: React.FC = () => {
   const sms = useSms();

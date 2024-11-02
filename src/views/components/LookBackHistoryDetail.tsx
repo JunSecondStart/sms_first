@@ -1,7 +1,6 @@
 import React from "react";
-import { SmsState } from "../../types/index.d";
 import { useSms } from "../../context";
-export const LookBackHistoryDetail: React.FC<SmsState> = () => {
+export const LookBackHistoryDetail: React.FC = () => {
   const sms = useSms();
   return (
     <>
