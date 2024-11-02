@@ -19,19 +19,19 @@ export const SmsFieldContextProvider: React.FC<Props> = ({ children }) => {
     });
 
 const SmsFunc:SmsFunc = {
-    smsSentByUser : () => {
+    smsSentByUser : (smsData:SmsState) => {
       // const Data = SmsData;
       setSmsData(
         {
-          id: 1,
-          phone_number_id: 1,
-          user_id: 1,
-          title: "Maybe, I succeeded making sms message.",
+          id: smsData.id,
+          phone_number_id: smsData.phone_number_id,
+          user_id: smsData.user_id,
+          title: smsData.title,
           content_text:
-            "set, OK",
-          created_at: "2024-11-02 09:16:00",
-          updated_at: "2024-11-02 09:16:00",
-          sent_at: "2024-MM-DD HH:MM:SS",
+          smsData.content_text,
+          created_at: smsData.created_at,
+          updated_at: smsData.updated_at,
+          sent_at: smsData.sent_at,
         });
     }
 } 

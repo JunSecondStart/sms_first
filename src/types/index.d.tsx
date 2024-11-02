@@ -22,7 +22,7 @@ export type SmsStatus = {
 }
 
 export type SmsFunc = {
-    smsSentByUser : ()=> void;
+    smsSentByUser : (smsData:SmsState)=> void;
 }
 
 // const setProps: (value: React.SetStateAction<Game>) => void
