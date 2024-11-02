@@ -1,4 +1,4 @@
-export type SmsContext = SmsFunc & SmsState & Props;
+export type SmsContext = SmsFunc & SmsState;
 
 // export type SmsStatus = {
 //     state: "not to do anything" | "will send" | "sending now" | "sent";
@@ -25,6 +25,8 @@ export type SmsFunc = {
     smsSentByUser : ()=> void;
 }
 
+// const setProps: (value: React.SetStateAction<Game>) => void
+
 //                         value
 // //  object{ key : (args)=> return,type }
 // key & value の object　が arrow 化している
@@ -49,6 +51,6 @@ export type User = {
     updated_at: string
 }
 
-export type Props = {
-    key?: number;
-}
+// export type Props = {
+//     key?: number;
+// }
