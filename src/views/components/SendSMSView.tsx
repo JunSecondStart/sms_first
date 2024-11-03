@@ -8,7 +8,7 @@ export const SendSMSView: React.FC = () => {
   const sms = useSms();
   return (
     <>
-      <body>
+      <section>
         {/* <ul>
           {Sms.map((s)=>(<li><Link to="./LookBackHistoryDetail" >No_sms,{s.id}:タイトル,{s.title}:送信日時,{s.sent_at}</Link></li>))}
         </ul> */}
@@ -18,7 +18,7 @@ export const SendSMSView: React.FC = () => {
         <ul>
           id:{sms.id},title:{sms.title},content:{sms.content_text},user_id:{sms.user_id},phone_number_id:{sms.phone_number_id}
         </ul>
-      </body>
+      </section>
     </>
   );
 };

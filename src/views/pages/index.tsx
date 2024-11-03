@@ -11,7 +11,7 @@ import { HomeButton } from "../components/HomeButton";
 export const Pages: React.FC = () => {
   return (
     <>
-      <body className="h-screen">
+      <section className="h-screen">
         <section className="relative flex">
           <div className="bg-sky-200">
             <HomeButton />
@@ -38,7 +38,7 @@ export const Pages: React.FC = () => {
             <Route path="/send_sms" element={<SendSMS />}></Route>
           </Routes>
         </section>
-      </body>
+      </section>
       {/* <foot>
         <p>sub menu</p>
       </foot> */}

@@ -1,4 +1,4 @@
-export type SmsContext = SmsFunc & SmsState;
+export type SmsContext = SmsFunc & SmsState & checkSwitchValue & awsCommandInputted & awsCommandInputtedReply & textContentValue;
 
 // export type SmsStatus = {
 //     state: "not to do anything" | "will send" | "sending now" | "sent";
@@ -21,8 +21,28 @@ export type SmsStatus = {
     SmsStatus : SmsState[];
 }
 
+export type textContentValue = {
+    textContentValue : string;
+}
+
+export type checkSwitchValue = {
+    checkSwitchValue: boolean;
+}
+
+export type awsCommandInputted = {
+    awsCommandInputted : string;
+}
+
+export type awsCommandInputtedReply = {
+    command : string;
+}
+
 export type SmsFunc = {
     smsSentByUser : (smsData:SmsState)=> void;
+    settextContent : (textContentValue:textContentValue)=>void; 
+    setCheckSwitch : (checkSwitchValue:checkSwitchValue) => void;
+    setawsCommand: (awsCommandInputted:awsCommandInputted) => void;
+    setawsCommandReply: (awsCommandInputtedReply:awsCommandInputtedReply) => void;
 }
 
 // const setProps: (value: React.SetStateAction<Game>) => void

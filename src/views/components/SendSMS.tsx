@@ -5,9 +5,9 @@ export const SendSMS: React.FC = () => {
   return (
     <>
       <header>menu for sms to send</header>
-      <body>
+      <section>
         <SendSMSView />
-      </body>
+      </section>
       <footer>default sub menu</footer>
     </>
   );
