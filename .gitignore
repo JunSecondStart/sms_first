@@ -24,4 +24,6 @@ yarn-error.log*
 
 # added after "default settings"
 docs/
-shell/send_sms.sh
+src/api/python/__pycache__
+src/api/python/venv/
+src/api/python/send_sms_sql_alchemy.py
