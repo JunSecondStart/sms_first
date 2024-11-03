@@ -5,9 +5,9 @@ export const RegisterNewNumber: React.FC = () => {
   return (
     <>
       <header>menu for register</header>
-      <body>
+      <section>
         <Home />
-      </body>
+      </section>
       <footer>default sub menu</footer>
     </>
   );

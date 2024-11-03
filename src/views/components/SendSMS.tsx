@@ -1,14 +1,13 @@
 import React from "react";
-import { Home } from "./Home";
-import { SendSMSCreated } from "./SendSMSCreated";
+import { SendSMSView } from "./SendSMSView";
 
 export const SendSMS: React.FC = () => {
   return (
     <>
       <header>menu for sms to send</header>
-      <body>
-        <SendSMSCreated />
-      </body>
+      <section>
+        <SendSMSView />
+      </section>
       <footer>default sub menu</footer>
     </>
   );
