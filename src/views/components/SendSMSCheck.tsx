@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "flowbite-react";
 import { useSms } from "../../context";
 import axios,{ AxiosResponse,AxiosRequestConfig } from 'axios';
 import { awsCommandInputtedReply } from "../../types/index.d";
 
-export const SendSMSCheck: React.FC = () => {
+export const SendSMSCheck: React.FC = React.memo(() => {
   const [openModal, setOpenModal] = useState(true);
   const sms = useSms();
   const yesFunc = () =>{
     setOpenModal(false);
-    sms.setCheckSwitch({checkSwitchValue:false});
+    sms.setCheckSwitch({checkSwitchValue:false,calledModalToggleSwitch:!sms.calledModalToggleSwitch});
     //send
     executeSendSMS();
   }
   const noFunc = () =>{
     setOpenModal(false);
-    sms.setCheckSwitch({checkSwitchValue:false});
+    sms.setCheckSwitch({checkSwitchValue:false,calledModalToggleSwitch:!sms.calledModalToggleSwitch});
   }
   const config: AxiosRequestConfig = {
     params: {
@@ -47,6 +47,10 @@ export const SendSMSCheck: React.FC = () => {
     });
 }
 
+// useEffect(()=>{
+//   console.log("smsData",sms.calledModalToggleSwitch);
+// },[sms.calledModalToggleSwitch]);
+
   return (
     <>
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
@@ -57,10 +61,10 @@ export const SendSMSCheck: React.FC = () => {
           <div className="px-4">
             <p className="text-gray-500">
               I want to send your SMS,OK?
+              {/* <br/>
+              使用するawsコマンド:{sms.command} */}
               <br/>
-              使用するawsコマンド:{sms.command}
-              <br/>
-              フロント表記のテキスト:{sms.textContentValue}
+              送信メッセージ:{sms.textContentValue}
             </p>
           </div>
         </Modal.Body>
@@ -83,4 +87,4 @@ export const SendSMSCheck: React.FC = () => {
       </Modal>
     </>
   );
-};
+});

@@ -10,7 +10,6 @@ export type SmsState = {
     id: number,
     phone_number_id: number,
     user_id: number,
-    title: string,
     content_text: string,
     created_at: string,
     updated_at: string,
@@ -26,7 +25,8 @@ export type textContentValue = {
 }
 
 export type checkSwitchValue = {
-    checkSwitchValue: boolean;
+    checkSwitchValue: boolean,
+    calledModalToggleSwitch: boolean;
 }
 
 export type awsCommandInputted = {
