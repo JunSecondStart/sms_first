@@ -16,7 +16,7 @@ export const SendSMSView: React.FC = () => {
         <SendSMSCreated />
         </div>
         <ul>
-          id:{sms.id},title:{sms.title},content:{sms.content_text},user_id:{sms.user_id},phone_number_id:{sms.phone_number_id}
+          id:{sms.id},content:{sms.content_text},user_id:{sms.user_id},phone_number_id:{sms.phone_number_id}
         </ul>
       </section>
     </>
