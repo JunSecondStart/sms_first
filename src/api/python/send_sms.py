@@ -36,16 +36,17 @@ async def create_sms(
 
     phone_number = f'5099999999'
 
-    input_content_text = f'{content_text}'
+    command = f"aws sns publish --phone-number '+810{phone_number}' --message '{content_text}'"
 
-    command = f"aws sns publish --phone-number '+810{phone_number}' --message '{input_content_text}'"
+    # シェルコマンドを実行
+    result = subprocess.run([command], shell=True, capture_output=True, text=True)
 
     data = {"command": command}
 
     return JSONResponse(content=data)
 
 # シェルコマンドを実行
-# result = subprocess.run([command], shell=True,capture_output=True, text=True)
+# result = subprocess.run([command], shell=True, capture_output=True, text=True)
 
 # 結果の出力
 # print(result.stdout)

@@ -17,7 +17,6 @@ export const SmsFieldContextProvider: React.FC<Props> = ({ children }) => {
     id: 0,
     phone_number_id: 0,
     user_id: 0,
-    title: "wow!What's happened??",
     content_text:
       "This is SMS sent from `AWS SNS`.You could get and see this message.So, I could suceed coding this func.",
     created_at: "2024-10-30 20:07:00",
@@ -27,6 +26,7 @@ export const SmsFieldContextProvider: React.FC<Props> = ({ children }) => {
   const [textContent,settextContentValue] = useState<textContentValue>({textContentValue:"text,default"});
   const [checkSwitchValue, setcheckSwitchValue] = useState<checkSwitchValue>({
     checkSwitchValue: false,
+    calledModalToggleSwitch:false
   });
   const [awsCommand, setawsCommand] = useState<awsCommandInputted>({awsCommandInputted:""});
   const [awsCommandReply, setawsCommandReply] = useState<awsCommandInputtedReply>({command : ""});
@@ -38,33 +38,17 @@ export const SmsFieldContextProvider: React.FC<Props> = ({ children }) => {
         id: smsData.id,
         phone_number_id: smsData.phone_number_id,
         user_id: smsData.user_id,
-        title: smsData.title,
         content_text: smsData.content_text,
         created_at: smsData.created_at,
         updated_at: smsData.updated_at,
         sent_at: smsData.sent_at,
       });
     },
-    // smsSentByUser: (smsData: SmsState) => {
-    //   // const Data = SmsData;
-    //   setSmsData({
-    //     id: smsData.id,
-    //     phone_number_id: smsData.phone_number_id,
-    //     user_id: smsData.user_id,
-    //     title: smsData.title,
-    //     content_text: smsData.content_text,
-    //     created_at: smsData.created_at,
-    //     updated_at: smsData.updated_at,
-    //     sent_at: smsData.sent_at,
-    //   });
-    // },
     settextContent: (textContentValue:textContentValue) => {
       settextContentValue(textContentValue);
-      console.log(textContent);
     },
     setCheckSwitch: (checkSwitchValue: checkSwitchValue) => {
       setcheckSwitchValue(checkSwitchValue);
-      console.log(checkSwitchValue);
     },
     setawsCommand: (awsCommandInputted:awsCommandInputted)=>{
       setawsCommand(awsCommandInputted);

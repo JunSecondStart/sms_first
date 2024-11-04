@@ -3,51 +3,32 @@ import { useSms } from "../../context";
 import { SmsState } from "../../types/index.d";
 import { SendSMSCheck } from "./SendSMSCheck";
 
-export const SendSMSCreated: React.FC = () => {
+export const SendSMSCreated: React.FC = React.memo(() => {
   const sms = useSms();
   const [textIdIncremented, settextIdIncremented] = useState(1);
-  const [textTitle, setTextTitle] = useState("title,default");
-  const [textContent, setTextContent] = useState("content,default");
-  const [smsDataInputted, setsmsDataInputted] = useState<SmsState>({
-    id: 0,
-    phone_number_id: 0,
-    user_id: 0,
-    title: "title",
-    content_text: "content",
-    created_at: "created_at",
-    updated_at: "updated_at",
-    sent_at: "sent_at",
-  });
-
-  const handleChangedText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextTitle(e.target.value);
-  };
 
   const handleChangedContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextContent(e.target.value);
     sms.settextContent({textContentValue:e.target.value});
   };
 
   const createSMS = () => {
     settextIdIncremented(textIdIncremented + 1);
-    setsmsDataInputted({
+    sms.smsSentByUser({
       id: textIdIncremented,
       phone_number_id: 1,
       user_id: 1,
-      title: textTitle,
       content_text: sms.textContentValue,
       created_at: "created_at",
       updated_at: "updated_at",
       sent_at: "sent_at"
     });
-    sms.smsSentByUser(smsDataInputted);
-    sms.setCheckSwitch({ checkSwitchValue: true });
+    sms.setCheckSwitch({ checkSwitchValue: true, calledModalToggleSwitch:!sms.calledModalToggleSwitch });
     sms.setawsCommand({awsCommandInputted:sms.content_text});
   };
   
   useEffect(()=>{
-    console.log("smsData",smsDataInputted);
-  },[sms.content_text]);
+    console.log("smsData",sms.calledModalToggleSwitch);
+  },[sms.calledModalToggleSwitch]);
 
 
   return (
@@ -58,14 +39,7 @@ export const SendSMSCreated: React.FC = () => {
           <div className="p-12">
             <div>
               <textarea
-                value={textTitle}
-                onChange={handleChangedText}
-                placeholder="title"
-              />
-            </div>
-            <div>
-              <textarea
-                value={textContent}
+                value={sms.textContentValue}
                 onChange={handleChangedContent}
                 placeholder="content"
               />
@@ -89,4 +63,4 @@ export const SendSMSCreated: React.FC = () => {
       </section>
     </>
   );
-};
+});
