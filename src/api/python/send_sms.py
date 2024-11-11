@@ -11,6 +11,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",  # Reactアプリケーションがホストされているオリジン
     "http://localhost:3000/send_sms",  # Reactアプリケーションがホストされているオリジン
+    "http://localhost:3333/send_sms"
     # 必要に応じて他のオリジンも追加可能
 ]
 app.add_middleware(
