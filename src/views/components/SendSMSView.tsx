@@ -1,5 +1,5 @@
 import React from "react";
-import { SmsState,SmsContext, PhoneNumber, User } from "../../types/index.d";
+import { SmsState,SmsContext, PhoneNumber, UserData } from "../../types/index.d";
 import { Link } from "react-router-dom";
 import { useSms } from "../../context/index";
 import { SendSMSCreated } from "./SendSMSCreated";
