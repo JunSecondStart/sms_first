@@ -5,9 +5,11 @@ import json
 app = FastAPI()
 
 path = "sqlite:///./sms_first.db"
+db_path = 'sms_first.db'
+query = 'SELECT * FROM users'  # 任意のSQLクエリを指定
 
-@app.get()
-def fetch_data_from_db(query):
+@app.get("/users")
+def fetch_data_from_db(path:str=db_path,query:str=query):
     # SQLiteデータベースに接続
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row  # 結果を辞書形式で取得
@@ -28,7 +30,5 @@ def fetch_data_from_db(query):
     return json_data
 
 # 使用例
-db_path = 'example.db'
-query = 'SELECT * FROM users'  # 任意のSQLクエリを指定
 json_result = fetch_data_from_db(db_path, query)
 print(json_result)

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Depends, Query, HTTPException
+from fastapi import FastAPI, Request, Depends, Path, HTTPException
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy import create_engine, Column, Integer, DateTime, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -6,6 +6,9 @@ from typing import List, Optional, Any
 from pydantic import BaseModel, constr
 from datetime import datetime
 from fastapi.responses import JSONResponse
+
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
 app = FastAPI()
 
@@ -22,8 +25,8 @@ class UserItem(Base):
     username = Column(String(50), index=True)
     phone_number = Column(String(50), index=True, nullable=True)
     password = Column(String(50), index=True)
-    updated_at = Column(DateTime, index=True)
-    created_at = Column(DateTime, index=True)
+    # updated_at = Column(DateTime, index=True)
+    # created_at = Column(DateTime, index=True)
 
 Base.metadata.create_all(bind=engine)
 
@@ -33,8 +36,8 @@ class UserItemResponse(BaseModel):
     username: constr(max_length=50)
     phone_number: constr(max_length=50)
     password: constr(max_length=50)  
-    updated_at: datetime
-    created_at: datetime
+    # updated_at: datetime
+    # created_at: datetime
 
     class Config:
         orm_mode = True
@@ -47,19 +50,36 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/users/{id}", response_model=UserItemResponse)
-async def read_items(request: Request, id: int, db: Session = Depends(get_db)) -> Any:
-    if id is not None:
-        useritems = UserItem(id=id)
-    else:
-        useritems = UserItem.all
+@app.get("/user/{id}", response_model=UserItemResponse)
+async def read_items(request: Request, id:int=Path(), db: Session = Depends(get_db)) -> Any:
+    useritems = db.query(UserItem).filter(UserItem.id == id).first()
     
     if not useritems:
         raise HTTPException(status_code=404, detail="Items not found")
 
     return useritems
 
+@app.get("/user", response_model=UserItemResponse)
+async def read_items(request: Request, id:int, db: Session = Depends(get_db)) -> Any:
+    useritems = db.query(UserItem).filter(UserItem.id == id).first()
+    
+    if not useritems:
+        raise HTTPException(status_code=404, detail="Items not found")
+
+    return useritems
+
+@app.get("/users", response_model=List[UserItemResponse])
+async def read_items(request: Request, db: Session = Depends(get_db)) -> Any:
+    useritems = db.query(UserItem).all()
+    
+    if not useritems:
+        raise HTTPException(status_code=404, detail="Items not found")
+
+    return useritems
+
+
+
 # サーバーの起動
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8765)
+    uvicorn.run(app, host="0.0.0.0", port=8383)
