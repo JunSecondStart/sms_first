@@ -21,13 +21,18 @@ export const SendSMSCheck: React.FC = React.memo(() => {
     params: {
       content_text: sms.content_text
     },
+    //// auth: {
+    ////   username: username,
+    ////   password: password
+    //// }
     // headers: {
     //   'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
     // }
   };
   // const [awsCommandReply, setawsCommandReply] = useState<awsCommandInputtedReply>({"command":"aaa"});
   const executeSendSMS = () => {
-    axios.get('http://127.0.0.1:8003/send_sms/print_data',config)
+    axios.get('http://54.238.22.31:8003/send_sms/print_data',config)
+    // axios.get('http://127.0.0.1:8003/send_sms/print_data',config)
     .then(function (response: AxiosResponse) {
         // 処理が成功した場合
         sms.setawsCommandReply({command: response.data.command});

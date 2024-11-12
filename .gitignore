@@ -27,3 +27,4 @@ docs/
 src/api/python/__pycache__
 src/api/python/venv/
 src/api/python/send_sms_sql_alchemy.py
+src/auth/.env

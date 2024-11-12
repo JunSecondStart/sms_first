@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../components/Home";
+import { User } from "../components/User";
 import { LookBackHistory } from "../components/LookBackHistory";
 import { RegisterNewNumber } from "../components/RegisterNewNumber";
 import { SendSMS } from "../components/SendSMS";
@@ -33,6 +34,7 @@ export const Pages: React.FC = () => {
           <p>Components-contents-</p>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/user" element={<User />}></Route>
             <Route path="/look_back_history" element={<LookBackHistory />}></Route>
             <Route path="/create_register" element={<RegisterNewNumber />}></Route>
             <Route path="/send_sms" element={<SendSMS />}></Route>

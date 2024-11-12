@@ -1,5 +1,5 @@
 export type SmsContext = SmsFunc & SmsState & checkSwitchValue & awsCommandInputted & awsCommandInputtedReply & textContentValue;
-
+export type UserContext = UserData;
 // export type SmsStatus = {
 //     state: "not to do anything" | "will send" | "sending now" | "sent";
 // }
@@ -61,14 +61,11 @@ export type PhoneNumber = {
     updated_at: string
 }
 
-export type User = {
+export type UserData = {
     id: number,
-    phone_number_id: number,
-    sms_id: number,
+    phone_number: string,
     name: string,
     password: string,
-    created_at: string,
-    updated_at: string
 }
 
 // export type Props = {
